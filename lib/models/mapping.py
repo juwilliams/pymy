@@ -1,6 +1,6 @@
 """
 
-models/map.py
+models/mapping.py
 
 description:
 	mapping between tables which exist in different database schema

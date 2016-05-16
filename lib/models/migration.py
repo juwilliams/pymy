@@ -1,12 +1,9 @@
 """
 
-models/field.py
+models/migration.py
 
 description:
-	field mapping for incoming/outgoing data between systems
-
-	from_field > input data
-	to_field > output data
+	contains details necessary to process a migration between databases and/or tables
 
 """
 
