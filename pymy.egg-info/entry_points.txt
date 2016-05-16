@@ -1,3 +1,0 @@
-[console_scripts]
-pymy = lib.cli:main
-
