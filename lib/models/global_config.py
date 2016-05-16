@@ -14,7 +14,7 @@ from .base_model import BaseModel
 
 class GlobalConfig(BaseModel):
 	def __init__(self, options):
-		#	misc fields
+		# misc fields
 		self.type = 'config'
 		self.path = '.'
 	
