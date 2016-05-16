@@ -4,14 +4,14 @@ from codecs import open
 from os.path import abspath, dirname, join
 from subprocess import call
 from setuptools import Command, find_packages, setup
-from connect import __version__
+from lib import __version__
 
 this_dir = abspath(dirname(__file__))
 with open(join(this_dir, 'README.rst'), encoding='utf-8') as file:
     long_description = file.read()
 
 setup(
-    name = 'connect',
+    name = 'pymy',
     version = __version__,
     description = 'Command line tool for migrating mysql table data between databases',
     long_description = long_description,
