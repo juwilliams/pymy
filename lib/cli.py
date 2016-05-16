@@ -1,23 +1,24 @@
 """
 usage:
     pymy -h | --help
-    pymy migrate -f MIGRATION_FILE -o OUTPUT_FILE
+    pymy migrate MIGRATION_FILE
     pymy init
     pymy create
-    pymy map MIGRATION_FILE FIELD_FROM FIELD_TO
+    pymy map MIGRATION_FILE FIELD_FROM FIELD_TO [DEFAULT_VALUE]
+    pymy unmap MIGRATION_FILE FIELD_FROM
+    pymy run MIGRATION_FILE
 
 arguments:
 	MIGRATION_FILE       The migration file to process
 	FIELD_FROM           Map column from
 	FIELD_TO             Map column to
+	DEFAULT_VALUE        Default value for mapping if None is returned
 
 options:
   	-h, --help           Show this screen
-  	-f                   Migration file
 
 examples:
   	pymy -m migrate_my_table.json
-
 
 help:
   	For help using this tool, please open an issue on the Github repository:

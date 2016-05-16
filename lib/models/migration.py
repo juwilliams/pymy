@@ -16,13 +16,15 @@ from .base_model import BaseModel
 
 class Migration(BaseModel):
 	def __init__(self, path):
+		self.table = ''
 		self.mappings = []
 		self.type = ''
-		self.path = path		
+		self.path = path
+		self.export = ''		
 
 	@staticmethod
-	def load(options):
-		return jsonpickle.decode(Migration.openFile('fields.json'))
+	def load(file_name):
+		return jsonpickle.decode(Migration.openFile(file_name))
 
 	@staticmethod
 	def openFile(file_name):
@@ -30,9 +32,5 @@ class Migration(BaseModel):
 			data = outfile.read()
 			return data
 
-class Map(BaseModel):
-	def __init__(self):
-		self.field_from = ''
-		self.field_to = ''
-		self.tags = ''
+
 

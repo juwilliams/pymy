@@ -1,4 +1,8 @@
-"""The base command."""
+"""
+
+commands/base_command.py
+
+"""
 
 class BaseCommand(object):
 	"""A base command."""
