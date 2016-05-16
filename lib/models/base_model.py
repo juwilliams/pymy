@@ -19,14 +19,14 @@ class BaseModel(object):
 
 	def write(self):
 		with open(self.path + '/' + self.type + '.json', 'w') as outfile:
-			#	serialize self
+			# serialize self
 			self.serialize()
-			#	write output json
+			# write output json
 			outfile.write(self.json)
 		return
 
 	def createDir(self, path):
-		#	create directory structure
+		# create directory structure
 		if not os.path.exists(path):
 			os.makedirs(path)
 			print 'Directory created > ' + path
@@ -35,7 +35,7 @@ class BaseModel(object):
 		return
 
 	def removeDir(self, path):
-		#	remove directory via shutil
+		# remove directory via shutil
 		import shutil
 
 		if confirm('This will remove ' + path + ' and all contents, are you sure?'):
@@ -45,7 +45,7 @@ class BaseModel(object):
 
 
 	def createFile(self, file_name, file_contents):
-		#	create default empty collection of fields for new container
+		# create default empty collection of fields for new container
 		with open(file_name, 'w') as outfile:
 			outfile.write(file_contents)
 			print 'File created > ' + file_name
