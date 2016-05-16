@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: connect
+Version: 1.0.0
+Summary: Command line tool for migrating mysql table data between databases
+Home-page: https://github.com/juwilliams/pymy
+Author: Justin Williams
+Author-email: justin.williams@rpdmsolutions.com
+License: UNLICENSE
+Description: # pymy
+        Python based CLI for migrating mysql table data
+        
+Keywords: cli
+Platform: UNKNOWN
+Classifier: Intended Audience :: mysql database users
+Classifier: Topic :: Utilities
+Classifier: License :: Public Domain
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
