@@ -17,10 +17,11 @@ class Migrate(BaseCommand):
 	def run(self):
 		from lib.models import Migration
 		from lib.models import GlobalConfig
+		from lib.models import BaseModel
 		
-		export = ()
+		rows = ()
 		row_delimiter = '\r\n'
-		col_delimiter = ', '
+		col_delimiter = ','
 
 		# load the global config
 		config = GlobalConfig.load()
@@ -40,9 +41,12 @@ class Migrate(BaseCommand):
 			# retrieve table rows
 			with connection.cursor() as cursor:
 				cols = self.getCols(migration)
-								
-				insert_sql = 'INSERT INTO {0} ({1}) VALUES ({2});'
+				cols = (col_delimiter.join(cols),)
 
+				# add header row
+				rows = rows + cols
+				
+				# get search cursor
 				cursor.execute(migration.query)
 
 				# iterate over rows and create insert statements
@@ -60,17 +64,20 @@ class Migrate(BaseCommand):
 								raw_val = mapping.default
 
 						encoded_val = pymysql.converters.escape_item(raw_val, 'utf-8').encode('ascii', 'xmlcharrefreplace')
-						
+						encoded_val = encoded_val.replace('"', '"""')
+						encoded_val = encoded_val.replace(',', '","')
+
 						vals = vals + (encoded_val,)
 						
 					result = cursor.fetchone()
 
-					export = export + (insert_sql.format(migration.to_table, col_delimiter.join(cols), col_delimiter.join(vals)),)
-				# save json file and optionally produce a sql file for the output data
+					# add value row
+					rows = rows + (col_delimiter.join(vals),)
 		finally:
 			connection.close()
-			migration.export = row_delimiter.join(export)
-			migration.write()
+			
+			# write the output to csv
+			BaseModel.writeRaw(migration.type + '.csv', row_delimiter.join(rows))
 
 	def getCols(self, migration):
 		cols = ()

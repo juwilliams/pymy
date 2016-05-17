@@ -25,6 +25,13 @@ class BaseModel(object):
 			outfile.write(self.json)
 		return
 
+	@staticmethod
+	def writeRaw(file_name, file_contents):
+		with open('./' + file_name, 'w') as outfile:
+			# write output json
+			outfile.write(file_contents)
+		return
+
 	def createDir(self, path):
 		# create directory structure
 		if not os.path.exists(path):
