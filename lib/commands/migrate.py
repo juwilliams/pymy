@@ -36,7 +36,7 @@ class Migrate(BaseCommand):
                              		charset='utf8mb4',
                              		cursorclass=pymysql.cursors.DictCursor)
 
-		try :
+		try:
 			# retrieve table rows
 			with connection.cursor() as cursor:
 				cols = self.getCols(migration)
@@ -51,9 +51,13 @@ class Migrate(BaseCommand):
 					vals = ()
 
 					for mapping in migration.mappings:
-						raw_val = result[mapping.field_from]
-						if raw_val is None and mapping.default != '':
-							raw_val = mapping.default
+						try:
+							raw_val = result[mapping.field_from]
+						except KeyError:
+							raw_val = mapping.default if mapping.default is not None else '' 
+						finally:
+							if raw_val is None and mapping.default != '':
+								raw_val = mapping.default
 
 						encoded_val = pymysql.converters.escape_item(raw_val, 'utf-8').encode('ascii', 'xmlcharrefreplace')
 						
