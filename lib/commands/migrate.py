@@ -61,7 +61,7 @@ class Migrate(BaseCommand):
 						
 					result = cursor.fetchone()
 
-					export = export + (insert_sql.format(migration.table, col_delimiter.join(cols), col_delimiter.join(vals)),)
+					export = export + (insert_sql.format(migration.to_table, col_delimiter.join(cols), col_delimiter.join(vals)),)
 				# save json file and optionally produce a sql file for the output data
 		finally:
 			connection.close()

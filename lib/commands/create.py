@@ -21,10 +21,12 @@ class Create(BaseCommand):
 		setup_migration = raw_input('Setup migration now? [yes/no]: ')
 		if setup_migration == 'yes' or setup_webeoc == 'y':
 			migration.table = raw_input('Table name: ')
+			migration.to_table = raw_input('To Table name: ')
 			migration.query = raw_input('Migration Query: ')
 			migration.generate_sql = True if raw_input('Generate SQL? [yes/no]: ') == 'yes' else False
 		else:
 			migration.table = ''
+			migration.to_table = ''
 			migration.query = ''
 			migration.generate_sql = False
 
