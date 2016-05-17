@@ -20,8 +20,8 @@ class Migrate(BaseCommand):
 		from lib.models import BaseModel
 		
 		rows = ()
-		row_delimiter = '\r\n'
-		col_delimiter = ','
+		row_delimiter = "\r\n"
+		col_delimiter = ","
 
 		# load the global config
 		config = GlobalConfig.load()
@@ -64,7 +64,7 @@ class Migrate(BaseCommand):
 								raw_val = mapping.default
 
 						encoded_val = pymysql.converters.escape_item(raw_val, 'utf-8').encode('ascii', 'xmlcharrefreplace')
-						encoded_val = encoded_val.replace('"', '"""')
+						encoded_val = encoded_val.replace('"', '""')
 						encoded_val = encoded_val.replace(',', '","')
 
 						vals = vals + (encoded_val,)
