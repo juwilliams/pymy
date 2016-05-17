@@ -63,6 +63,7 @@ class Migrate(BaseCommand):
 
 							encoded_val = pymysql.converters.escape_item(raw_val, 'utf-8').encode('ascii', 'xmlcharrefreplace')
 							encoded_val = encoded_val.replace('\\"', '"')
+							encoded_val = encoded_val.replace('\\n', '')
 							encoded_val = encoded_val[1:-1]
 
 							vals.append(encoded_val)
