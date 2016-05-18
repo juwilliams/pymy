@@ -6,7 +6,6 @@ usage:
     pymy create
     pymy map MIGRATION_FILE FIELD_FROM FIELD_TO [DEFAULT_VALUE]
     pymy unmap MIGRATION_FILE FIELD_FROM
-    pymy run MIGRATION_FILE
 
 arguments:
 	MIGRATION_FILE       The migration file to process
