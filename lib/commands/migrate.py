@@ -74,6 +74,7 @@ class Migrate(BaseCommand):
 						# add value row
 						csv_writer.writerow(vals)
 		except Exception as e:
+			print repr(e)
 			print 'Error Migrating!\n' + e.message
 		finally:
 			connection.close()			
